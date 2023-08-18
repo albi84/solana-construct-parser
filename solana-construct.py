@@ -26,9 +26,9 @@ _PUBLIC_KEY = Bytes(32)
 _BLOCKHASH = Bytes(32)
 
 _HEADER = Struct(
-    "required"      / Int8ul,
-    "readonly"      / Int8ul,
-    "notrequired"   / Int8ul
+    "num_of_signers"                / Int8ul,
+    "num_of_readonly_signers"       / Int8ul,
+    "num_of_readonly_non_signers"   / Int8ul
 )
 
 _ACCOUNTS = Struct(
@@ -46,7 +46,7 @@ _INSTRUCTION = Struct(
     "accounts" / _ACCOUNT_IDXS,
     "datalen" / CompactU16(),
     "instruction_id_data" / Bytes(this.datalen),
-    # "instruction_id_and_data" / Int32ul,
+    # "instruction_id" / Int32ul,
     # "instruction_data" / Bytes(this.datalen - 4)
 )
 
